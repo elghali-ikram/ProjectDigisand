@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produits; 
+use App\Models\Commentaire; 
+
 
 
 use Illuminate\Http\Request;
@@ -32,6 +34,14 @@ class index extends Controller
             'prix' => $request->prix,
         ]);
         return redirect()->route('ADD')->with('success', 'Produit ajouté avec succès.');
+
+
+}
+public function show($id)
+{
+    $produit = Produits::findOrFail($id);
+    $commentaires = $produit->commentaires;
+    return view('show', compact('produit', 'commentaires'));
 
 
 }

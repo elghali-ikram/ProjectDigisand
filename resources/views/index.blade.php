@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
     <body class="antialiased"> 
         <div class="relative flex flex-column bg-danger items-top justify-center min-h-screen bg-gray-100   sm:items-center py-4 sm:pt-0">
     <div class="container">
-    <H1>WELCOME</H1>
+    <H1>Bienvenue</H1>
         <div class="row mb-3">
             <div class="col">
                 <form action="" method="GET">
@@ -46,6 +46,8 @@
                             <th scope="col">Nom</th>
                             <th scope="col">Description</th>
                             <th scope="col">Prix</th>
+                            <th scope="col">commentaires</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +57,13 @@
                         <td>{{ $produit->name }}</td>
                         <td>{{ $produit->description }}</td>
                         <td>{{ $produit->prix }}</td>
+                        <td>
+                        <form action="{{ route('produits.show', ['id' => $produit->id])}}" method="GET">
+                    <div class="input-group">
+                        <button class="btn btn-danger" type="submit">Afficher</button>
+                    </div>
+                </form>
+                        </td>
                     </tr>
                     @endforeach
                     </tbody>

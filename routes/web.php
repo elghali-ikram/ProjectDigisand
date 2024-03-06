@@ -19,4 +19,8 @@ use App\Http\Controllers\ADD;
 Route::get('/', [index::class,'index'])->name('home');
 Route::get('/ADD', [ADD::class,'ADD'])->name('ADD');
 Route::post('/produits', [index::class, 'store'])->name('produits.store');
+Route::get('/produits/{id}', [index::class,'show'])->name('produits.show');
+Route::get('/test-middleware', function () {
+    return response()->json(['message' => 'Middleware testé avec succès']);
+})->middleware('checkLang');
 
